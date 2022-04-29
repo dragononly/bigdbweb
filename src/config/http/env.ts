@@ -2,10 +2,10 @@
 let e = "测试环境"
 let a: string, b: string, c: string, d: string
 
-if (e == "测试环境22") {
-    a = "http://cdn.pccpa.cn/live/?a="
-    b = "http://127.0.0.1:9001"
-    c = "http://localhost:9001"
+if (e == "测试环境") {
+    a = "http://127.0.0.1:9001/"
+    b = "http://127.0.0.1:9001/"
+    c = "http://127.0.0.1:9001"
     d = "https://zxy1.pccpa.cn/api/v1/tj-adapter/front/callback"
 } else {
     a = "https://cdn.pccpa.cn/live/?a="

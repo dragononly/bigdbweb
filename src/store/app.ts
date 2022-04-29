@@ -4,4 +4,5 @@ export const myGlobal = reactive({
 
     User: false || '',
     Eid: false || '',
+    NowExcelId: ""
 });

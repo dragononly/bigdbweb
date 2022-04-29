@@ -36,24 +36,32 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
-import axios from 'axios';
-import { useRouter } from 'vue-router';
-import { Notify } from 'vant';
+import { reactive } from "vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
+import { Notify } from "vant";
+import { htmlurl } from "@/config/http/env";
+import { Rget } from "@/config/http";
+
 const router = useRouter();
 const home = reactive({
-  username: '',
-  password: '',
+  username: "",
+  password: "",
 });
 const onSubmit = async () => {
-  let url = 'https://cdn.pccpa.cn:9000/live/login';
+  let url = htmlurl + "live/login";
   let reqData = { user: home.username, pwd: home.password };
   try {
     let cab = await axios.post(url, reqData);
     if (cab?.data?.data) {
-      router.push('home');
+      sessionStorage.eid = cab?.data?.data.eid;
+
+      const cab2 = await Rget("skyuser", { eid: cab.data?.data.eid, limit: 1 });
+
+      sessionStorage.user = cab2.data?.data[0].name;
+      router.push("home");
     } else {
-      Notify('账号密码错误');
+      Notify("账号密码错误");
     }
   } catch (error) {}
 };

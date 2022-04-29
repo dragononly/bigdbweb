@@ -1,28 +1,31 @@
 <template>
-  <div class="app">
-    <sample-header></sample-header>
-    <div class="content">
-      <div class="nav">
-        <sample-nav></sample-nav>
+  <suspense>
+    <a-config-provider :locale="locale">
+      <div class="app">
+        <div class="content">
+          <div class="nav"></div>
+          <div>
+            <router-view></router-view>
+          </div>
+        </div>
       </div>
-      <div>
-        <router-view></router-view>
-      </div>
-    </div>
-    <sample-footer></sample-footer>
-  </div>
+    </a-config-provider>
+  </suspense>
 </template>
 
 <script>
-import '@grapecity/spread-sheets/styles/gc.spread.sheets.excel2016colorful.css';
-import GC from '@grapecity/spread-sheets';
-import '@grapecity/spread-sheets-resources-zh';
-GC.Spread.Common.CultureManager.culture('zh-cn');
+import zhCN from "ant-design-vue/es/locale/zh_CN"; //引入antd中文包
+import "@grapecity/spread-sheets/styles/gc.spread.sheets.excel2016colorful.css";
+import GC from "@grapecity/spread-sheets";
+import "@grapecity/spread-sheets-resources-zh";
+GC.Spread.Common.CultureManager.culture("zh-cn");
 export default {
-  name: 'app',
+  name: "app",
   components: {},
   data() {
-    return {};
+    return {
+      locale: zhCN, //传值给a-config-provider组件
+    };
   },
 };
 </script>
@@ -124,7 +127,7 @@ img {
 }
 
 body {
-  font-family: 'Gotham SSm A', 'Gotham SSm B';
+  font-family: "Gotham SSm A", "Gotham SSm B";
   font-size: 14px;
   color: #333333;
   background-color: #ffffff;
@@ -140,20 +143,20 @@ h4,
 h5,
 h6 {
   margin: 10px 0;
-  font-family: 'Forza SSm A', 'Forza SSm B';
+  font-family: "Forza SSm A", "Forza SSm B";
   font-weight: bold;
   line-height: 20px;
   color: inherit;
   text-rendering: optimizelegibility;
 }
 
-.test-btn-list label input[type='checkbox'] {
+.test-btn-list label input[type="checkbox"] {
   margin: 5px;
 }
 
-.test-btn-list label input[type='text'],
-.test-btn-list label input[type='color'],
-.test-btn-list label input[type='number'] {
+.test-btn-list label input[type="text"],
+.test-btn-list label input[type="color"],
+.test-btn-list label input[type="number"] {
   margin: 0 5px;
 }
 

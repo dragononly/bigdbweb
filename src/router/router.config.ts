@@ -27,6 +27,11 @@ export default [
 		component: () => import(/* webpackChunkName: "about" */ '@/pages/show.vue')
 	},
 	{
+		path: '/admin_home',
+		name: 'adminhome',
+		component: () => import('@/pages/myadmin/myadmin.vue'),
+	},
+	{
 		path: '/home',
 		name: 'home',
 		component: () => import('@/pages/user/level1/home.vue'),
